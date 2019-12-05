@@ -2,7 +2,11 @@ extends layout
 
 block content
 	h1 Chat Rooms things
-	table
+	table.table.table-striped
+		thead
+			tr
+				th Name
+				th Id
 		tbody
 			each room in rooms
 				tr
