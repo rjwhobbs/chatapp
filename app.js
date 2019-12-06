@@ -40,6 +40,12 @@ app.post('/admin/rooms/add', function(req, res) {
 	res.redirect('/admin/rooms');
 });
 
+app.get('/admin/rooms/delete/:id', function(req, res) {
+	let roomId = req.params.id;
+	rooms = rooms.filter(r => r.id !== roomId);
+	res.redirect('/admin/rooms');
+});
+
 app.listen(3000, function() {
 	console.log('Chat app listening on port 3000');
 });
