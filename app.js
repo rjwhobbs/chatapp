@@ -48,6 +48,13 @@ app.get('/admin/rooms/edit/:id', function(req, res) {
 	res.render('edit', {room});
 });
 
+app.post('/admin/rooms/edit/:id', function(req, res) {
+	let roomId = req.params.id;
+	let room = _.find(rooms, r => r.id === roomId);
+	room.name = req.body.name;
+	res.redirect('/admin/rooms');
+});
+
 app.get('/admin/rooms/delete/:id', function(req, res) {
 	let roomId = req.params.id;
 	rooms = rooms.filter(r => r.id !== roomId);
