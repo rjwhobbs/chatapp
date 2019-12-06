@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const uuid = require('uuid/v4');
 let rooms = require('./data/rooms.json');
 
 app.set('views', './views');
@@ -31,8 +32,13 @@ app.get('/admin/rooms/add', function(req, res) {
 });
 
 app.post('/admin/rooms/add', function(req, res) {
-	debugger;
-	res.send("nothing");
+	let room = {
+		name: req.body.name,
+		id: uuid()
+	}
+	rooms.push(room);
+	res.json(room);
+	// res.send("nothing");
 });
 
 app.listen(3000, function() {
