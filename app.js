@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const uuid = require('uuid/v4');
+const _ = require('lodash');
+
 let rooms = require('./data/rooms.json');
 
 app.set('views', './views');
@@ -38,6 +40,12 @@ app.post('/admin/rooms/add', function(req, res) {
 	}
 	rooms.push(room);
 	res.redirect('/admin/rooms');
+});
+
+app.get('/admin/rooms/edit/:id', function(req, res) {
+	let roomId = req.params.id;
+	let room = _.find(rooms, r => r.id === roomId);
+	res.render('edit', {room});
 });
 
 app.get('/admin/rooms/delete/:id', function(req, res) {
