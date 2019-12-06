@@ -37,8 +37,7 @@ app.post('/admin/rooms/add', function(req, res) {
 		id: uuid()
 	}
 	rooms.push(room);
-	res.json(room);
-	// res.send("nothing");
+	res.redirect('/admin/rooms');
 });
 
 app.listen(3000, function() {
