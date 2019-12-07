@@ -7,27 +7,29 @@ var rooms = require('./data/rooms.json');
 var router = express.Router();
 module.exports = router;
 
-router.get('/admin/rooms', function(req, res) {
+router.get('/rooms', function(req, res) {
+	var origUrl = req.originalUrl;
 	res.render('rooms', {
 		title: 'Admin rooms',
-		rooms: rooms
+		rooms: rooms,
+		origUrl: origUrl
 	});
 });
 
-router.get('/admin/rooms/add', function(req, res) {
+router.get('/rooms/add', function(req, res) {
 	res.render('add');
 });
 
-router.post('/admin/rooms/add', function(req, res) {
+router.post('/rooms/add', function(req, res) {
 	var room = {
 		name: req.body.name,
 		id: uuid()
 	}
 	rooms.push(room);
-	res.redirect('/admin/rooms');
+	res.redirect(req.baseUrl + '/rooms');
 });
 
-router.get('/admin/rooms/edit/:id', function(req, res) {
+router.get('/rooms/edit/:id', function(req, res) {
 	var roomId = req.params.id;
 	var room = _.find(rooms, r => r.id === roomId);
 	if(!room) {
@@ -37,7 +39,7 @@ router.get('/admin/rooms/edit/:id', function(req, res) {
 	res.render('edit', {room});
 });
 
-router.post('/admin/rooms/edit/:id', function(req, res) {
+router.post('/rooms/edit/:id', function(req, res) {
 	var roomId = req.params.id;
 	var room = _.find(rooms, r => r.id === roomId);
 	if(!room) {
@@ -45,11 +47,11 @@ router.post('/admin/rooms/edit/:id', function(req, res) {
 		return ;
 	}
 	room.name = req.body.name;
-	res.redirect('/admin/rooms');
+	res.redirect(req.baseUrl + '/rooms');
 });
 
-router.get('/admin/rooms/delete/:id', function(req, res) {
+router.get('/rooms/delete/:id', function(req, res) {
 	var roomId = req.params.id;
 	rooms = rooms.filter(r => r.id !== roomId);
-	res.redirect('/admin/rooms');
+	res.redirect(req.baseUrl + '/rooms');
 });
