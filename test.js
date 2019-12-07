@@ -12,15 +12,14 @@ const _ = require('lodash');
 // console.log(room);
 // console.log(rooms);
 
-var rooms2 = [
+var objectTest = [
 	{name: 'D', id: 4},
 	{name: 'E', id: 5},
 	{name: 'F', id: 6},
 ];
 
-var test = rooms2[1];
+var test = objectTest[1];
 test.name = "WHAT";
-console.log(test);
-console.log(rooms2[1].name);
-rooms2[1].name = "THIS";
+console.log (objectTest[1].name); 
+objectTest[1].name = "THIS";
 console.log(test.name);
