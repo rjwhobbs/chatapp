@@ -21,4 +21,6 @@ var rooms2 = [
 var test = rooms2[1];
 test.name = "WHAT";
 console.log(test);
-console.log(rooms2[1]);
+console.log(rooms2[1].name);
+rooms2[1].name = "THIS";
+console.log(test.name);
