@@ -14,6 +14,11 @@ app.use(express.static('node_modules/bootstrap/dist'));
 // This needs to be registered before any routes that rely on it
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(function (req, res, next) {
+	console.log(req.body);
+	next();
+});
+
 app.get('/', function(req, res) {
 	res.render('index', {title: 'Home'});
 });
