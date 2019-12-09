@@ -34,7 +34,8 @@ router.route('/rooms/edit/:id')
 		var roomId = req.params.id;
 		var room = _.find(rooms, r => r.id === roomId);
 		if(!room) {
-			res.sendStatus(404);
+			//res.sendStatus(404);
+			next("Something went wrong");
 			return ;
 		}
 		res.locals.room = room; // This set the var in the render? render used to have ('edit', {room})
