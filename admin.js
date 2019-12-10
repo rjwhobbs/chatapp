@@ -45,6 +45,7 @@ router.route('/rooms/edit/:id')
 		res.render('edit');
 	})
 	.post(function(req, res) {
+		//console.log(res.locals);
 		res.locals.room.name = req.body.name;
 		res.redirect(req.baseUrl + '/rooms');
 });

@@ -1,34 +1,22 @@
 const _ = require('lodash');
 
-// var rooms = [
-// 	{name: 'A', id: 1},
-// 	{name: 'b', id: 2},
-// 	{name: 'c', id: 3},
-// ];
-// console.log(rooms);
-// var roomId = 2
-// var room = _.find(rooms, r => r.id === roomId);
-// room.name = 'Z';
-// console.log(room);
-// console.log(rooms);
+let stuff = [
+	{ thing: 'a', num: 1 },
+	{ thing: 'b', num: 2 },
+	{ thing: 'c', num: 3 },
+];
 
-// var objectTest = [
-// 	{name: 'D', id: 4},
-// 	{name: 'E', id: 5},
-// 	{name: 'F', id: 6},
-// ];
+let copy = stuff[1];
+let original = { name: 'Potato'};
+let room = {
+	name: 'Cheesy',
+	number: 1
+};
 
-// var test = objectTest[1];
-// test.name = "WHAT";
-// console.log (objectTest[1].name); 
-// objectTest[1].name = "THIS";
-// console.log(test.name);
+original.test = copy;
 
-var objectTest = {
-	name: "a",
-	id: 1
-}
+original.test.thing = "XXXXX";
+console.log(stuff);
 
-var refObjTest = objectTest;
-refObjTest.name = 'b';
-console.log(objectTest.name);
+
+
