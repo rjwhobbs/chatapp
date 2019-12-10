@@ -6,9 +6,8 @@ conn = connection.startConnection();
 conn.connect((err) => {
 	if (err) {throw err;}
 	console.log("Connection established");
-	conn.query(sql.createTableUsers, (err) => {
+	conn.query(sql.createTableBasicUsers, (err) => {
 		if (err) { throw err; }
-		console.log("Users table Created");
+		console.log("Basic users table Created");
 	});
 });
-
