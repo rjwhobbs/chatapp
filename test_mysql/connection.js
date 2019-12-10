@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 
-let DB = 'testdb2';
+//let DB = 'testdb2';
 
 let settingsOne = {
 	host: 'localhost',
@@ -16,16 +16,14 @@ let settingsTwo = {
 	socketPath: '/goinfre/rhobbs/Desktop/Server/mysql/tmp/mysql.sock'
 };
 
-let conn = mysql.createConnection(settingsTwo);
+const startConnection = function () {
+	return mysql.createConnection(settingsTwo);
+}
 
-conn.connect((err) => {
-	if (err) {throw err;}
-	console.log("Connection established");
-	conn.query('CREATE DATABASE IF NOT EXISTS testdb2', (err) => {
-		if (err) { throw err; }
-		console.log("DB Created");
-	});
-});
+module.exports = {
+	startConnection
+}
+
 
 
 

@@ -1,1 +1,1 @@
-const tables = require('./')
+const tables = require('./connection');
