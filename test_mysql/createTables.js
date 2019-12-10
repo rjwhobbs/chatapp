@@ -12,6 +12,3 @@ conn.query(sql.createTableBasicUsers, (err) => {
 	if (err) {throw err;}
 	console.log("Basic Users table Created");
 });
-
-
-
