@@ -1,14 +1,17 @@
 const connection = require('./connection');
 const sql = require('./statements');
 
-conn = connection.startConnection();
+let conn = connection.startConnection();
 
-conn.connect((err) => {
+conn.query(sql.createTableUsers, (err) => {
 	if (err) {throw err;}
-	console.log("Connection established");
-	conn.query(sql.createTableUsers, (err) => {
-		if (err) { throw err; }
-		console.log("Users table Created");
-	});
+	console.log("Users table Created");
 });
+
+conn.query(sql.createTableBasicUsers, (err) => {
+	if (err) {throw err;}
+	console.log("Basic Users table Created");
+});
+
+
 
