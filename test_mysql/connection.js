@@ -1,7 +1,5 @@
 const mysql = require('mysql');
 
-//let DB = 'testdb2';
-
 let settingsOne = {
 	host: 'localhost',
 	user: 'test2',
