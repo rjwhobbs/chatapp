@@ -3,7 +3,7 @@ const mysql = require('mysql');
 //socketPath: '/goinfre/rhobbs/Desktop/Server/mysql/tmp/mysql.sock',
 //test2 XYfErbAQ8dAvrjKc
 // user: 'test_root',
-// 	password: 's55oQsBuoDvyr2HB',
+// password: 's55oQsBuoDvyr2HB',
 
 let conn = mysql.createConnection({
 	host: 'localhost',
