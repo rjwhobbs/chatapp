@@ -1,5 +1,6 @@
 $(function () {
 
+	console.log(rooms);
     var roomId;
 
     $.ajax({

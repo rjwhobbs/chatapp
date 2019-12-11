@@ -24,10 +24,10 @@ app.get('/', function(req, res) {
 	res.render('home', {title: 'Home'});
 });
 
-let adminRouter = require('./admin');
+var adminRouter = require('./admin');
 app.use('/admin', adminRouter);
 
-let apiRouter = require('./api');
+var apiRouter = require('./api');
 app.use('/api', apiRouter);
 
 app.listen(3000, function() {
