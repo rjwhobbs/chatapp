@@ -22,12 +22,13 @@ $(function () {
         $.ajax({
             type: "POST",
             url: "/api/rooms/" + roomId + "/messages",
-            data: message
-        }).success(function () {
-            $("#message").val("");
-            getMessages();
-        });
-    });
+            data: message,
+        	success: function () {
+            	$("#message").val("");
+            	getMessages();
+        	}
+		});
+	});
 
     $('body').on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
@@ -53,8 +54,9 @@ $(function () {
         $.ajax({
             type: "DELETE",
             url: "/api/rooms/" + roomId + "/messages",
-        }).success(function () {
-            $("#messages").val("");
-        });
-    });
+        	success: function () {
+            	$("#messages").val("");
+        	}
+		});
+	});
 });
