@@ -47,7 +47,7 @@ $(function () {
 				});
 				$("#messages").val(messages);
 			}
-        });
+		});
     }
 
     $("#delete").click(function(){
