@@ -43,7 +43,7 @@ $(function () {
             	$("#roomName").text("Messages for " + data.room.name);
             	var messages = "";
             	$.each(data.messages, function (key, message) {
-                	messages += message.text + "\r";
+                	messages += message.text + "\r"; // \r instead of <br>?
 				});
 				$("#messages").val(messages);
 			}
