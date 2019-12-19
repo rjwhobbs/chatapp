@@ -14,6 +14,7 @@ app.use(express.static('node_modules/bootstrap/dist'));
 app.use(express.static('node_modules/jquery/dist'));
 // This needs to be registered before any routes that rely on it
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // app.use(function (req, res, next) {
 // 	console.log(req);

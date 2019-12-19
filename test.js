@@ -33,4 +33,3 @@ roomMessages[0].text = "XXXX";
 console.log(roomMessages);
 console.log(messages);
 
-
