@@ -1,14 +1,15 @@
 let data = require('./data');
 
 console.log(data);
-function delay() {
-	setTimeout(() => {
-		console.log("Timeout done");
-		console.log(data);
-	}, 5000); 
-}
-delay();
-//let test2 = require('./test2');
+// function delay() {
+// 	setTimeout(() => {
+// 		console.log("Timeout done");
+// 		console.log(data);
+// 	}, 5000); 
+// }
+// delay();
+// let test2 = require('./test2');
+require('./test2');
 console.log("back in test");
 // console.log(fish);
 
