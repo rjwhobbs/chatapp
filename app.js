@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-
+//order matters for middleware
 app.set('views', './views');
 app.set('view engine', 'pug');
+app.use(require('morgan')('combined'));
 
 // Registring middleware with express app.
 // When getting requests this middle ware will be invoked, 
@@ -13,8 +14,10 @@ app.use(express.static('public'));
 app.use(express.static('node_modules/bootstrap/dist'));
 app.use(express.static('node_modules/jquery/dist'));
 // This needs to be registered before any routes that rely on it
+require('express-debug')(app, {});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
 
 // app.use(function (req, res, next) {
 // 	console.log(req);
