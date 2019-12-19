@@ -4,7 +4,10 @@ const app = express();
 //order matters for middleware
 app.set('views', './views');
 app.set('view engine', 'pug');
-app.use(require('morgan')('combined'));
+
+let fs = require('fs');
+let accessLogStream = fs.createWriteStream(__dirname + "/access.log", {flags: 'a'});
+app.use(require('morgan')('combined', {stream: accessLogStream}));
 
 // Registring middleware with express app.
 // When getting requests this middle ware will be invoked, 
