@@ -40,5 +40,10 @@ router.route('/rooms/:roomId/messages')
 	})
 	.delete(function(req, res){
 		let roomId = req.params.roomId;
-
+		// Chapter: API to delete meassages.
+		// This could cause issues as we are now making a new ref to the array.
+		// It might be safer to put all the functions that manipulate this
+		// array into it's own module and then export that module.
+		messages = messages.filter(m => m.roomId !== roomId);
+		res.sendStatus(200);
 	});
