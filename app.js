@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 // });
 
 app.get('/', function(req, res) {
+	// throw new Error("OH NOSSS");
 	res.render('home', {title: 'Home'});
 });
 
@@ -36,6 +37,10 @@ app.use('/admin', adminRouter);
 
 var apiRouter = require('./api');
 app.use('/api', apiRouter);
+
+// app.use(function(err, req, res, next) {
+// 	res.send("Super secret error handler"); // Error handling middleware must come last
+// });
 
 app.listen(3000, function() {
 	console.log('Chat app listening on port 3000');
