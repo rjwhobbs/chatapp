@@ -28,8 +28,7 @@ $(function () {
             	$("#message").val("");
 				getMessages();
         	}
-		});
-		
+		});	
 	});
 
     $('body').on('click', 'a.room', function (event) {
@@ -41,10 +40,11 @@ $(function () {
         $.ajax({
             type: "GET",
             url: "/api/rooms/" + roomId + "/messages",
-        	success: function (data) {
-            	$("#roomName").text("Messages for " + data.room.name);
+        	success: function (datas) {
+				console.log(datas);
+            	$("#roomName").text("Messages for " + datas.room.name);
             	var messages = "";
-            	$.each(data.messages, function (key, message) {
+            	$.each(datas.messages, function (key, message) {
                 	messages += message.text + "\r"; // \r instead of <br>?
 				});
 				$("#messages").val(messages);
