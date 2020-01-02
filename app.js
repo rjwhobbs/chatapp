@@ -5,9 +5,7 @@ const app = express();
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-let fs = require('fs');
-let accessLogStream = fs.createWriteStream(__dirname + "/access.log", {flags: 'a'});
-app.use(require('morgan')('combined', {stream: accessLogStream}));
+app.use(require('./logging'));
 
 // Registring middleware with express app.
 // When getting requests this middle ware will be invoked, 
