@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+let passport = require('passport');
 //order matters for middleware
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -19,16 +20,13 @@ require('express-debug')(app, {});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-
-// app.use(function (req, res, next) {
-// 	console.log(req);
-// 	next();
-// });
-
 app.get('/', function(req, res) {
 	// throw new Error("OH NOSSS");
 	res.render('home', {title: 'Home'});
 });
+
+var authRouter = require('./auth');
+app.use(authRouter);
 
 var adminRouter = require('./admin');
 app.use('/admin', adminRouter);
