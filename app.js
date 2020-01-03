@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 let passport = require('passport');
+require('./passport-init');
 //order matters for middleware
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -19,6 +20,13 @@ app.use(express.static('node_modules/jquery/dist'));
 require('express-debug')(app, {});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(require('express-session')({
+	secret: 'keyboard dog',
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', function(req, res) {
 	// throw new Error("OH NOSSS");
