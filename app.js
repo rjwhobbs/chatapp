@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+var flash = require('connect-flash');
+app.use(flash());
 let passport = require('passport');
 require('./passport-init');
 //order matters for middleware
