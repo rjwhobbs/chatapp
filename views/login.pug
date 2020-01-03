@@ -17,6 +17,8 @@ html(lang='en')
 		.container
 			.main-content.row
 				.col-md-4.col-md-offset-4
+					if message
+						p Incorrect username or password
 					form(action='/login', method='post')
 						.form-group
 							label Username:
