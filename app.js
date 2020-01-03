@@ -28,13 +28,21 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+var authRouter = require('./auth');
+app.use(authRouter);
+
+app.use(function(req, res, next) {
+	if (req.isAuthenticated()) { // This is provided by passport middware
+		next();
+		return ;
+	}
+	res.redirect('/login');
+});
+
 app.get('/', function(req, res) {
 	// throw new Error("OH NOSSS");
 	res.render('home', {title: 'Home'});
 });
-
-var authRouter = require('./auth');
-app.use(authRouter);
 
 var adminRouter = require('./admin');
 app.use('/admin', adminRouter);
