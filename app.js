@@ -35,6 +35,7 @@ app.use(authRouter);
 
 app.use(function(req, res, next) {
 	if (req.isAuthenticated()) { // This is provided by passport middware
+		res.locals.user = req.user;
 		next();
 		return ;
 	}
