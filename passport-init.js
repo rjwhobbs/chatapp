@@ -4,5 +4,10 @@ var users = require('./data/users');
 var _ = require('lodash');
 
 passport.use(new localStrategy(function(username, password, done) {
-	// things
+	let user = _.find(users, u => u.name === username);
+	if (!user || user.password !== password) {
+		done(null, false); // Null = no error, false = auth failed, no user
+		return ;
+	}
+	done(null, user);
 }));
