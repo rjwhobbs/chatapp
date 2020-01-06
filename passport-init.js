@@ -13,9 +13,10 @@ passport.use(new localStrategy(function(username, password, done) {
 }));
 // Check chap 67, perhaps rather pass user.id here.
 passport.serializeUser(function(user, done) {
-	done(null, user);
+	done(null, user.id);
 });
 
-passport.deserializeUser(function(user, done) {
+passport.deserializeUser(function(id, done) {
+	let user = _.find(users, u => u.id === id);
 	done(null, user);
 });

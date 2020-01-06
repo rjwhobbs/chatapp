@@ -41,7 +41,7 @@ $(function () {
             type: "GET",
             url: "/api/rooms/" + roomId + "/messages",
         	success: function (data) {
-				console.log(data);
+				//console.log(data);
             	$("#roomName").text("Messages for " + data.room.name);
             	var messages = "";
             	$.each(data.messages, function (key, message) {
