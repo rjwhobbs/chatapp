@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js"
+	"dev": "NODE_ENV=developement nodemon app.js",
+	"pro": "nodemon app.js"
   },
   "repository": {
     "type": "git",
