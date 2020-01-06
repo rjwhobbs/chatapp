@@ -18,7 +18,7 @@ $(function () {
 
     $("#post").click(function () {
         var message = {text: $("#message").val()};
-
+		console.log(message);
         $.ajax({
             type: "POST",
             url: "/api/rooms/" + roomId + "/messages",
@@ -40,11 +40,11 @@ $(function () {
         $.ajax({
             type: "GET",
             url: "/api/rooms/" + roomId + "/messages",
-        	success: function (datas) {
-				console.log(datas);
-            	$("#roomName").text("Messages for " + datas.room.name);
+        	success: function (data) {
+				console.log(data);
+            	$("#roomName").text("Messages for " + data.room.name);
             	var messages = "";
-            	$.each(datas.messages, function (key, message) {
+            	$.each(data.messages, function (key, message) {
                 	messages += message.text + "\r"; // \r instead of <br>?
 				});
 				$("#messages").val(messages);

@@ -4,6 +4,7 @@ const uuid = require('uuid/v4');
 
 let rooms = require('./data/rooms.json');
 let messages = require('./data/messages.json');
+let users = require('./data/users.json');
 
 var router = express.Router();
 module.exports = router;
@@ -16,8 +17,13 @@ router.route('/rooms/:roomId/messages')
 	.get(function(req, res) {
 		let roomId = req.params.roomId;
 		let roomMessages = messages
-		.filter(m => m.roomId === roomId);
+		.filter(m => m.roomId === roomId)
+		.map(m => {
+			let user = _.find(users, u => u.id === m.userId); //Needs error handling incase user doesn't exist
+			return {text: `${user.name}: ${m.text}`};
+		});
 		let room = _.find(rooms, r => r.id === roomId);
+		//console.log(roomMessages);
 		if (!room) {
 			res.sendStatus(404);
 			return ;
@@ -32,7 +38,7 @@ router.route('/rooms/:roomId/messages')
 		let message = {
 			roomId: roomId,
 			text: req.body.text,
-			userId: '44f885e8-87e9-4911-973c-4074188f408a',
+			userId: req.user.id,
 			id: uuid()
 		};
 		messages.push(message);
