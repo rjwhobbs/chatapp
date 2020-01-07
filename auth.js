@@ -20,6 +20,7 @@ router.get('/login', function(req, res) {
 		return ;
 	}
 	let message = req.flash('error');
+	//console.log(message);
 	res.render('login', {message: message[0]});
 });
 
