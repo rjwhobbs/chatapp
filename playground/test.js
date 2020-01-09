@@ -16,3 +16,4 @@ console.log("back in test");
 let arr = [1,2,3,4,5,6];
 arr[6] = 'thing';
 console.log(arr);
+console.log(data);
